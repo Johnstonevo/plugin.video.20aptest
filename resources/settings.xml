@@ -239,7 +239,7 @@
 		<setting id="adv_watched" label="Advanced Last Playing Point" type="bool" default="true" />
 
 		<setting label="Show Trailer from Source Search (When Not in Source Window Display)" type="lsep"/>
-		<setting id="trailer_dp" label="Enable Trailer" type="bool" default="true" />
+		<setting id="trailer_dp" label="Enable Trailer" type="bool" default="false" />
 		<setting id="trailer_wait" label="Wait For The Trailer To End" type="bool" default="false" />
 
 		<setting label="Fast Play (When Not in Source Window Mode)" type="lsep"/>
@@ -278,8 +278,7 @@
 		<setting id="order_torrents_new" label="Order By Seeders" type="bool" default="true" />
 		<setting id="min_seed" type="number" label="Minimum Seed Numbers" visible="eq(-3,true)" default="10"/>
 		<setting id="size_limit" type="number" label="Filter Sources Larger Than (Gb)" visible="eq(-4,true)" default="4"/>
-		<setting id="players_new" type="enum" label="Choose Player" visible="eq(-5,true)
-	"values="Quasar|Pulsar|KmediaTorrent|Torrenter|YATP|XBMCtorrent|PopcornTime|20aptest|Acestream|Elementum|Choose" default="7" />
+		<setting id="players_new" type="enum" label="Choose Player" visible="eq(-5,true)" values="Quasar|Pulsar|KmediaTorrent|Torrenter|YATP|XBMCtorrent|PopcornTime|20aptest|Acestream|Elementum|Choose" default="7" />
 		<setting label="Download 20aptest Torrent Player" visible="eq(-6,true)" option="close" type="action" action="RunPlugin(plugin://plugin.video.20aptest?mode2=118&url=www)"/>
 		<setting label="Remove 20aptest Torrent Player" visible="eq(-7,true)" option="close" type="action" action="RunPlugin(plugin://plugin.video.20aptest?mode2=119&url=www)"/>
 

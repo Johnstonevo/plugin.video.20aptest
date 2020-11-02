@@ -3008,6 +3008,7 @@ def tv_menu():
       addDir3('Networks','tv',101,'','','')
       addDir3('Favourite Shows','tv',18,'','','')
       addDir3('Recommended Shows for You','www',27,'','','',isr=' ')
+      addDir3('Live UK TV'.decode('utf8'),'https://raw.githubusercontent.com/Free-IPTV/Countries/master/UK01_UNITED_KINGDOM.m3u',56,'http://cdn.marketplaceimages.windowsphone.com/v8/images/31edc250-11db-47c3-ad08-712fb1082435?imageType=ws_icon_large','https://blog.keycdn.com/blog/wp-content/uploads/2014/11/live-streaming-1-768x384.png','live tv'.decode('utf8'))
       #addDir3('Popular IMDB','https://www.imdb.com/search/title?title_type=tv_series',114,'','','Popular IMDB',isr=' ')
       #addDir3('Popular 50\'s'.decode('utf8'),'https://www.imdb.com/search/title?title_type=tv_series&release_date=1950-01-01,1959-12-31&user_rating=5.0,',114,'','','',isr=' ')
       #addDir3('Popular 60\'s'.decode('utf8'),'https://www.imdb.com/search/title?title_type=tv_series&release_date=1960-01-01,1969-12-31&user_rating=5.0,',114,'','','',isr=' ')
@@ -3261,14 +3262,13 @@ def bobbys():
        except  Exception as e:
          logging.warning(e)
          pass
-
+'''
 def live():
 	addDir3('Live TV'.decode('utf8'),'www',146,BASE_LOGO+'livetv.png','https://cdn2.vectorstock.com/i/1000x1000/85/36/live-stream-tv-logo-icon-vector-16968536.jpg','Live TV')
-	addDir3('Acestream'.decode('utf8'),'www',76,BASE_LOGO+'acestream.png','https://i.pinimg.com/originals/6b/18/31/6b1831503dc0e0470b2bf1e1b5df978f.jpg','Acestream')
 	addDir3('Live Sports'.decode('utf8'),'www',40,BASE_LOGO+'live.png','https://scotch-res.cloudinary.com/image/upload/w_900,q_auto:good,f_auto/v1549206813/gyxlxwotow6xxysb527u.png','Live Sports')
 	addDir3('M3u8 Lists'.decode('utf8'),'www',55,BASE_LOGO+'m3u8.png','https://indianapublicmedia.org/wp-content/themes/ipm-aux-services/images/services/transmission.jpg','M3u8 Lists')
 	addDir3('NBA','https://www.nbafullhd.com',105,BASE_LOGO+'nba.png','https://cdn.nba.net/nba-drupal-prod/2017-08/SEO-image-NBA-logoman.jpg','NBA')
-
+'''
 def music():
       import datetime
       #all_img=get_movie_backdrop()
@@ -3589,47 +3589,6 @@ def c_get_sources(name,year,original_title,season,episode,id,eng_name,show_origi
                     all_fv_servers.append(items.replace('.py',''))
                 
                 z+=1
-        '''
-        if Addon.getSetting("rdsource")=='true':
-            onlyfiles2 = [f for f in listdir(rd_dir) if isfile(join(rd_dir, f))]
-            f_result={}
-            
-
-            name_check=''
-            z=0
-            
-            for items in onlyfiles2:
-              if Addon.getSetting("server_dp")=='true' and silent_mode==False:
-                 dp.update(int((z*100.0)/(len(onlyfiles2))), 'Please Wait','Collecting', items )
-              all_s_in=({},int((z*100.0)/(len(onlyfiles2))),items,1,'')
-              if items !='general.py' and '.pyc' not in items and '.pyo' not in items and '__init__' not in items and items !='resolveurl_temp.py' and items!='cloudflare.py' and items!='Addon.py':
-               if fav_status=='true':
-                    if items.replace('.py','') not in all_fv_servers:
-                        continue
-           
-                    
-               elif fav_status=='rest':
-                        if items.replace('.py','')  in all_fv_servers:
-                            continue
-               impmodule = __import__(items.replace('.py',''))
-               type=['rd']
-               type,source_scraper=get_type(impmodule,items.replace('.py',''))
-               if Addon.getSetting(items.replace('.py',''))=="true":
-                   
-                   if name_check!='':
-                     if items.replace('.py','')==name_check:
-                       if tv_movie=='movie' and 'movie' in type:
-                         all_sources.append((items.replace('.py',''),impmodule))
-                       elif tv_movie=='tv' and 'tv' in type:
-                         all_sources.append((items.replace('.py',''),impmodule))
-                   else:
-                     if tv_movie=='movie' and 'movie' in type:
-                       all_sources.append((items.replace('.py',''),impmodule))
-                     elif tv_movie=='tv' and 'tv' in type:
-                       all_sources.append((items.replace('.py',''),impmodule))
-            
-            z+=1
-        '''
       else:
         all_fv_servers=[]
     
@@ -9713,13 +9672,14 @@ def play(name,url,iconimage,fanart,description,data,season,episode,original_titl
      if 'Redirector' in url:
         url=requests.get(url,stream=True).url
      o_plot=description
-     
+
      add_ace=''
 
+     '''     
      if url=='aceplay' or '/ace/getstream' in url:
         url=cache.get(refresh_ace,24,name, table='cookies')
         add_ace='__aceplay__'
-        
+     '''       
      
      
 
@@ -12569,210 +12529,7 @@ def show_sources():
 def last_sources():
 
     show_sources()
-def acestream():
-    addDir3('Search'.decode('utf8'),'www',77,'https://lh3.googleusercontent.com/0m0JeYjdEbLUVYCn_4vQjgaybPzyZB9z1fazy07JFkKyF6dK1gboo7_N9cz0GADxJw4=s180','https://i.pinimg.com/originals/6b/18/31/6b1831503dc0e0470b2bf1e1b5df978f.jpg','Acestream'.decode('utf8'))
-    addDir3('My Channels'.decode('utf8'),'www',79,'https://lh3.googleusercontent.com/0m0JeYjdEbLUVYCn_4vQjgaybPzyZB9z1fazy07JFkKyF6dK1gboo7_N9cz0GADxJw4=s180','https://i.pinimg.com/originals/6b/18/31/6b1831503dc0e0470b2bf1e1b5df978f.jpg','Acestream'.decode('utf8'))
-def search_ace():
-        search_entered=''
-       
-        
-        keyboard = xbmc.Keyboard(search_entered, 'Enter Search')
-        keyboard.doModal()
-        if keyboard.isConfirmed():
-               search_entered = keyboard.getText()
-               headers = {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0',
-                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                    'Accept-Language': 'he,he-IL;q=0.8,en-US;q=0.5,en;q=0.3',
-                    'Referer': 'https://acestreamsearch.com/en/',
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Connection': 'keep-alive',
-                    'Upgrade-Insecure-Requests': '1',
-                    'Pragma': 'no-cache',
-                    'Cache-Control': 'no-cache',
-               }
 
-               data = {
-                  'cn': search_entered
-               }
-
-               response = requests.post('https://acestreamsearch.com/en/', headers=headers, data=data).content
-               regex_pre='<ul class="list-group">(.+?)</ul>'
-               match_pre=re.compile(regex_pre).findall(response)
-               for item in match_pre:
-                regex='<li class="list-group-item"><a href="(.+?)">(.+?)<'
-                match=re.compile(regex).findall(item)
-                icon='https://lh3.googleusercontent.com/0m0JeYjdEbLUVYCn_4vQjgaybPzyZB9z1fazy07JFkKyF6dK1gboo7_N9cz0GADxJw4=s180'
-                fanart='https://i.pinimg.com/originals/6b/18/31/6b1831503dc0e0470b2bf1e1b5df978f.jpg'
-                for link,name in match:
-                   
-                    regex='acestream://(.+?)(?:/|$)'
-                    match=re.compile(regex).findall(link)
-                    f_link='http://127.0.0.1:6878/ace/getstream?id='+match[0]
-                    addLink(name,f_link,5,False,iconimage=icon,fanart=fanart,description=name)
-               headers = {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0',
-                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                    'Accept-Language': 'en-US,en;q=0.5',
-                    'Connection': 'keep-alive',
-                    'Upgrade-Insecure-Requests': '1',
-                    'Pragma': 'no-cache',
-                    'Cache-Control': 'no-cache',
-                }
-
-               params = (
-                    ('sort', 'fname'),
-                )
-               logging.warning('Getting')
-               response = requests.get('http://91.92.66.82/trash/ttv-list/AceLiveList.php', headers=headers, params=params).content
-               regex='type=checkbox /></TD><TD data-v="(.+?)">.+?</TD><TD data-v=".+?">.+?</TD><TD>(.+?)<'
-                      
-               match=re.compile(regex).findall(response)
-       
-       
-               for name,link in match:
-                   if search_entered.lower() in name.lower():
-                   
-                    f_link='http://127.0.0.1:6878/ace/getstream?id='+link
-                    addLink('[S-2] '+name,f_link,5,False,iconimage=icon,fanart=fanart,description=name)
-               headers = {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0',
-                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                    'Accept-Language': 'en-US,en;q=0.5',
-                    'Connection': 'keep-alive',
-                    'Upgrade-Insecure-Requests': '1',
-                    'Pragma': 'no-cache',
-                    'Cache-Control': 'no-cache',
-                }
-
-               response = requests.get('https://www.livefootballol.me/acestream-channel-list-2018.html', headers=headers).content
-               regex='<tr>(.+?)</tr>'
-               match_pre=re.compile(regex,re.DOTALL).findall(response)
-               for items in match_pre:
-                   regex='a href=".+?>(.+?)<.+?<td>(.+?)<'
-                   match=re.compile(regex,re.DOTALL).findall(items)
-                   #logging.warning(match
-                   for name,link in match:
-              
-                       if search_entered.lower() in name.lower():
-                        regex='acestream://(.+?)(?:/|$)'
-                        match=re.compile(regex).findall(link)
-                        f_link='http://127.0.0.1:6878/ace/getstream?id='+match[0]
-                        addLink('[S-3] '+name,f_link,5,False,iconimage=icon,fanart=fanart,description=name)
-def chan_ace(name,url,description):
-    
-    if description=='add':
-        dbcur.execute("INSERT INTO acestream Values ('%s', '%s', '%s', '%s','%s', '%s', '%s');" %  (name.replace("'","%27"),url,description.replace("'","%27"),'','','',''))
-        dbcon.commit()
-        xbmc.executebuiltin((u'Notification(%s,%s)' % ('20aptest', 'Added'.decode('utf8'))).encode('utf-8'))
-    elif description=='remove':
-        dbcur.execute("DELETE  FROM acestream WHERE url = '%s'"%(url))
-        
-      
-        dbcon.commit()
-        xbmc.executebuiltin((u'Notification(%s,%s)' % ('20aptest', 'Removed'.decode('utf8'))).encode('utf-8'))
-def refresh_ace(search_entered):
-    o_name=search_entered
-
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        'Accept-Language': 'he,he-IL;q=0.8,en-US;q=0.5,en;q=0.3',
-        'Referer': 'https://acestreamsearch.com/en/',
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Connection': 'keep-alive',
-        'Upgrade-Insecure-Requests': '1',
-        'Pragma': 'no-cache',
-        'Cache-Control': 'no-cache',
-    }
-
-    data = {
-      'cn': search_entered
-    }
-    f_link=''
-    response = requests.post('https://acestreamsearch.com/en/', headers=headers, data=data).content
-    regex_pre='<ul class="list-group">(.+?)</ul>'
-    match_pre=re.compile(regex_pre).findall(response)
-    for item in match_pre:
-        regex='<li class="list-group-item"><a href="(.+?)">(.+?)<'
-        match=re.compile(regex).findall(item)
-        icon='https://lh3.googleusercontent.com/0m0JeYjdEbLUVYCn_4vQjgaybPzyZB9z1fazy07JFkKyF6dK1gboo7_N9cz0GADxJw4=s180'
-        fanart='https://i.pinimg.com/originals/6b/18/31/6b1831503dc0e0470b2bf1e1b5df978f.jpg'
-        for link,name in match:
-            
-            regex='acestream://(.+?)(?:/|$)'
-            match=re.compile(regex).findall(link)
-            
-            if search_entered==name:
-                f_link='http://127.0.0.1:6878/ace/getstream?id='+match[0]
-                #return f_link
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        'Accept-Language': 'en-US,en;q=0.5',
-        'Connection': 'keep-alive',
-        'Upgrade-Insecure-Requests': '1',
-        'Pragma': 'no-cache',
-        'Cache-Control': 'no-cache',
-    }
-
-    params = (
-        ('sort', 'fname'),
-    )
-
-    response = requests.get('http://91.92.66.82/trash/ttv-list/AceLiveList.php', headers=headers, params=params).content
-    regex='type=checkbox /></TD><TD data-v="(.+?)">.+?</TD><TD data-v=".+?">.+?</TD><TD>(.+?)<'
-           
-    match=re.compile(regex).findall(response)
-
-
-    logging.warning('Renew s2')
-    for name,link in match:
-       
-       
-       if search_entered.lower() =='[s-2] '+name.lower():
-        logging.warning('Found s2')
-        f_link='http://127.0.0.1:6878/ace/getstream?id='+link
-    
-    headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Language': 'en-US,en;q=0.5',
-            'Connection': 'keep-alive',
-            'Upgrade-Insecure-Requests': '1',
-            'Pragma': 'no-cache',
-            'Cache-Control': 'no-cache',
-        }
-
-    response = requests.get('https://www.livefootballol.me/acestream-channel-list-2018.html', headers=headers).content
-    regex='<tr>(.+?)</tr>'
-    match_pre=re.compile(regex,re.DOTALL).findall(response)
-
-    for items in match_pre:
-           regex='a href=".+?>(.+?)<.+?<td>(.+?)<'
-           match=re.compile(regex,re.DOTALL).findall(items)
-           #logging.warning(match
-           for name,link in match:
-               
-               if search_entered.lower() =='[s-3] '+ name.lower():
-                regex='acestream://(.+?)(?:/|$)'
-                match=re.compile(regex).findall(link)
-                f_link='http://127.0.0.1:6878/ace/getstream?id='+match[0]
-               
-    if f_link=='':
-      xbmcgui.Dialog().ok("Error",'Missing Channel')
-      sys.exit()
-    else:
-      return f_link
-def my_ace():
-    dbcur.execute("SELECT * FROM acestream")
-
-    match = dbcur.fetchall()
-    
-    icon='https://lh3.googleusercontent.com/0m0JeYjdEbLUVYCn_4vQjgaybPzyZB9z1fazy07JFkKyF6dK1gboo7_N9cz0GADxJw4=s180'
-    fanart='https://i.pinimg.com/originals/6b/18/31/6b1831503dc0e0470b2bf1e1b5df978f.jpg'
-    for name,link,plot,op,op1,op2,op3 in match:
-        addLink(name,'aceplay',5,False,iconimage=icon,fanart=fanart,description=name)
 
 
 def all_new_source(url):
@@ -14440,17 +14197,19 @@ elif mode2==74:
 elif mode2==75: 
     last_sources()
 
-elif mode2==76: 
-    acestream()
 
-elif mode2==77:
-    search_ace()
+#elif mode2==76: 
+#    acestream()
 
-elif mode2==78:
-    chan_ace(name,url,description)
+#elif mode2==77:
+#    search_ace()
+
+#elif mode2==78:
+#    chan_ace(name,url,description)
     
-elif mode2==79:
-    my_ace()
+#elif mode2==79:
+#    my_ace()
+
 
 elif mode2==80:
     logging.warning(data)
